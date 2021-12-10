@@ -1,5 +1,5 @@
 use std::net::{TcpListener, TcpStream};
-use std::io::{Read, Write, BufReader, BufRead};
+use std::io::{Write, BufReader, BufRead};
 use std::thread;
 
 fn main() {
