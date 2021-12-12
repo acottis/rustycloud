@@ -11,7 +11,7 @@ pub fn get() -> Result<String> {
     let mut vars = String::new();
 
     for var in env::vars(){
-       vars.push_str(&format!("{} --- {}\n", var.0, var.1));
+       vars.push_str(&format!("{} -> {}<br>", var.0, var.1));
     }
 
     Ok(format!(
