@@ -15,13 +15,13 @@ pub fn get() -> Result<String> {
     }
 
     Ok(format!(
-        "ARCH: {ARCH}<br>
-        FAMILY: {FAMILY}\n\
-        OS: {OS}\n\
-        EXE: {EXE}\n\
-        PWD: {PWD}\n\
-        ARGS: {ARGS:?}\n\
-        ### ENVIROMENT VARIABLES ###\n\
+        "ARCH: {ARCH}<br>\
+        FAMILY: {FAMILY}<br>\
+        OS: {OS}<br>\
+        EXE: {EXE}<br>\
+        PWD: {PWD}<br>\
+        ARGS: {ARGS:?}<br>\
+        ### ENVIROMENT VARIABLES ###<br>\
         {VARS}",
         ARCH = env::consts::ARCH,
         FAMILY = env::consts::FAMILY,
