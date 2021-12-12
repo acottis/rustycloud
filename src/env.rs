@@ -15,7 +15,7 @@ pub fn get() -> Result<String> {
     }
 
     Ok(format!(
-        "ARCH: {ARCH}\n\
+        "ARCH: {ARCH}<br>
         FAMILY: {FAMILY}\n\
         OS: {OS}\n\
         EXE: {EXE}\n\
