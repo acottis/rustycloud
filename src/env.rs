@@ -11,18 +11,20 @@ pub fn get() -> Result<String> {
     let mut vars = String::new();
 
     for var in env::vars(){
-       vars.push_str(&format!("{} -> {}<br>", var.0, var.1));
+       vars.push_str(&format!("{} -> {}<br>\n", var.0, var.1));
     }
 
     Ok(format!(
-        "ARCH: {ARCH}<br>\
-        FAMILY: {FAMILY}<br>\
-        OS: {OS}<br>\
-        EXE: {EXE}<br>\
-        PWD: {PWD}<br>\
-        ARGS: {ARGS:?}<br>\
-        ### ENVIROMENT VARIABLES ###<br>\
+        "Hello from Rust: {VERSION}<br>\n\
+        ARCH: {ARCH}<br>\n\
+        FAMILY: {FAMILY}<br>\n\
+        OS: {OS}<br>\n\
+        EXE: {EXE}<br>\n\
+        PWD: {PWD}<br>\n\
+        ARGS: {ARGS:?}<br>\n\
+        <br>### ENVIROMENT VARIABLES ###<br>\n\
         {VARS}",
+        VERSION = env::var("RUST_VERSION").map_err(Error::EnvVarEmtpy)?,
         ARCH = env::consts::ARCH,
         FAMILY = env::consts::FAMILY,
         OS = env::consts::OS,
