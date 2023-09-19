@@ -16,5 +16,10 @@
     - 'gcr.io/${PROJECT_ID}/${REPO_NAME}:${COMMIT_SHA}'
     - '--region'
     - '${LOCATION}'
+    - '--cpu'
+    - '1'
+    - '--max-instances' 
+    - '1'
+    - '--cpu-throttling'
   images:
   - 'gcr.io/${PROJECT_ID}/${REPO_NAME}:${COMMIT_SHA}'
