@@ -13,6 +13,7 @@ static LISTENING_ADDR: &'static str = "0.0.0.0";
 
 const INDIE_AUTH: &'static str = r#"<html>
     <link href="https://github.com/acottis" rel="me">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
 </html>"#;
 
 fn main() {
