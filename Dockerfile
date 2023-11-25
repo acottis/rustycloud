@@ -1,21 +1,17 @@
-# Build from git ```sudo docker build https://github.com/acottis/rustycloud.git#main -t rustycloud-tag```
-# Run on port 8080 and detach from terminal ```sudo docker run -dp 80:8080 rustycloud-tag```
+FROM docker.io/rust:1.72.1-bookworm as builder
 
+WORKDIR /build
 
-FROM rust:1.56-slim-buster
+COPY src src
+COPY Cargo.toml Cargo.toml
+COPY Cargo.lock Cargo.lock
 
-# RUN apt-get update; apt-get --assume-yes install curl
+# Ensure we static link
+RUN RUSTFLAGS='-C target-feature=+crt-static' cargo build --release
+RUN mv target/release/rustycloud app
 
-# HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=1 \
-#     CMD curl -f http://localhost:8080 || exit 1
+FROM scratch
 
-ENV PORT=8080
+COPY --from=builder /build/app /app
 
-WORKDIR /hello-from-rustia
-COPY ./Cargo.lock ./
-COPY ./Cargo.toml ./
-COPY ./src ./src
-
-RUN cargo build --release
-
-CMD cargo run --release
+CMD [ "./app" ]
